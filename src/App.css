@@ -1,0 +1,29 @@
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  margin: 2em;
+  padding: 1em;
+}
+
+button {
+  cursor: pointer;
+}
+
+.footer {
+  margin:1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pagination {
+  display: flex;
+  gap:1em;
+}
+
+.isActive {
+  background-color: blue
+}

@@ -1,10 +1,11 @@
 import "./App.css";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
-    <>
-      <div></div>
-    </>
+    <div className="app">
+      <Dashboard />
+    </div>
   );
 }
 
