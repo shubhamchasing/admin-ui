@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "./helper";
+import { capitalizeFirstLetter } from "../../../utils/commonFunctions";
 
 const responseTransformer = (userList) =>
   userList.map((user) => {

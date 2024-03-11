@@ -1,8 +1,5 @@
 import { isSubstringInStringIgnoreCase } from "../../../utils/commonFunctions";
 
-export const capitalizeFirstLetter = (stringValue) =>
-  stringValue.charAt(0).toUpperCase() + stringValue.slice(1);
-
 export const updateSelectedStatusById = (
   userList,
   selectedUserId,
@@ -38,11 +35,8 @@ export const filterUsers = (userList, searchTerm) =>
     );
   });
 
-export const getTotalPage = (totalCount, pageSize) => {
-  const totalPage = Math.ceil(totalCount / pageSize);
-  return totalPage 
-  // > 0 ? totalPage : 1;
-};
+export const getTotalPage = (totalCount, pageSize) =>
+  Math.ceil(totalCount / pageSize);
 
 export const getAdjustedCurrentPage = (currentPage, totalPage) =>
   Math.min(currentPage, totalPage);
