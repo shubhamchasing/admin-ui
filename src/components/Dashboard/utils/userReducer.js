@@ -66,6 +66,7 @@ const userListReducer = (state, { type, payload }) => {
       );
       const totalCount = updatedRenderedUserList.length;
       const totalPage = getTotalPage(totalCount, pagination.pageSize);
+      const adjustedCurrentPage = totalPage === 0 ? 0 : 1;
       return {
         ...state,
         renderedUserList: {
@@ -74,7 +75,7 @@ const userListReducer = (state, { type, payload }) => {
         },
         pagination: {
           ...pagination,
-          currentPage: 1,
+          currentPage: adjustedCurrentPage,
           totalPage: totalPage,
         },
       };
