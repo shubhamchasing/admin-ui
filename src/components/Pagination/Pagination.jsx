@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 // import icon
 const Pagination = ({ totalPage, currentPage, onPageChange }) => {
   const totalPageList = Array.from(
@@ -7,7 +9,7 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
 
   const isLeftArrowButtonsDisabled = currentPage === 1 || currentPage === 0;
   const isRightArrowButtonsDisabled = totalPage === currentPage;
-  console.log("pagination");
+  // console.log("pagination");
 
   const handleFirstPage = () => {
     onPageChange(1);
@@ -68,5 +70,10 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
     </div>
   );
 };
-
-export default Pagination;
+const PaginationMemoized = memo(Pagination, (prevProps, nextProps) => {
+  return (
+    prevProps.totalPage === nextProps.totalPage &&
+    prevProps.currentPage === nextProps.currentPage
+  );
+});
+export default PaginationMemoized;

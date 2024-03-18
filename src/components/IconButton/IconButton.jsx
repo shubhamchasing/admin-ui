@@ -9,7 +9,7 @@ const IconButton = ({
   const handleOnClick = () => {
     onClick(id, data);
   };
-  // console.log(id,icon, className);
+
   return (
     <button
       type="button"
