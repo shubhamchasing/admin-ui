@@ -1,10 +1,7 @@
 import { useState } from "react";
 
-import { CiCircleRemove, CiEdit, CiFloppyDisk, CiTrash } from "react-icons/ci";
-
+import TableRowMemoized from "./TableRow";
 import Checkbox from "../Checkbox/Checkbox";
-import Select from "../Select/Select";
-import IconButton from "../IconButton/IconButton";
 import {
   REMOVE_USER,
   SELECT_ALL_USERS,
@@ -13,22 +10,31 @@ import {
 } from "../Dashboard/utils/userReducer";
 
 import "./style.css";
+import { validateData } from "../../utils/validateData";
 // error validation
-//isAllSelected memoize
 
 const roleOptions = [
   { label: "Member", value: "Member" },
   { label: "Admin", value: "Admin" },
 ];
 
+const initialState = {
+  id: "",
+  data: {},
+  errors: {},
+};
+
 const Table = ({ userData, dispatch }) => {
-  const [editCell, setEditCell] = useState({
-    id: "",
-    data: {},
-  });
+  const [editCell, setEditCell] = useState(initialState);
 
   const isAllSelected =
     userData.length > 0 ? userData.every((user) => user.isSelected) : false;
+
+  const isSaveDisabled = (() => {
+    const errorValueArray = Object.values(editCell.errors);
+    if (errorValueArray.length === 0) return true;
+    return errorValueArray.some((error) => !!error);
+  })();
 
   const handleSelect = (isSelected, id) => {
     dispatch({
@@ -52,36 +58,42 @@ const Table = ({ userData, dispatch }) => {
   };
 
   const handleEdit = (id, data) => {
-    setEditCell({ id, data });
+    const editableData = Object.keys(data).reduce((acc, key) => {
+      if (key !== "isSelected") {
+        acc[key] = data[key];
+      }
+      return acc;
+    }, {});
+    setEditCell({ ...initialState, id, data: editableData });
   };
 
   const handleCancel = () => {
-    setEditCell({
-      id: "",
-      data: {},
-    });
+    setEditCell(initialState);
   };
 
   const handleSave = () => {
     dispatch({
       type: UPDATE_USER,
       payload: {
-        data: {
-          id: editCell.data.id,
-          name: editCell.data.name,
-          email: editCell.data.email,
-          role: editCell.data.role,
-        },
+        data: editCell.data,
       },
     });
-    handleCancel();
+    setEditCell(initialState);
   };
 
   const handleOnChange = (event) => {
     const { value, name } = event.target;
-    setEditCell((prevValue) => ({
-      ...prevValue,
-      data: { ...prevValue.data, [name]: value },
+    const errorMessage = validateData(name, value);
+    setEditCell((prevEditCell) => ({
+      ...prevEditCell,
+      data: {
+        ...prevEditCell.data,
+        [name]: value,
+      },
+      errors: {
+        ...prevEditCell.errors,
+        [name]: errorMessage,
+      },
     }));
   };
 
@@ -98,94 +110,25 @@ const Table = ({ userData, dispatch }) => {
           <th>Name</th>
           <th>Email</th>
           <th>Role</th>
-          <th>Acions</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {userData.map((user) => {
-          const isEditableCell = editCell.id === user.id;
-          return (
-            <tr key={user.id}>
-              <td>
-                <Checkbox
-                  id={user.id}
-                  isSelected={user.isSelected}
-                  handleSelect={handleSelect}
-                />
-              </td>
-              <td>
-                {isEditableCell ? (
-                  <input
-                    type="text"
-                    name="name"
-                    value={editCell.data.name}
-                    onChange={handleOnChange}
-                  />
-                ) : (
-                  <span>{user.name}</span>
-                )}
-              </td>
-              <td>
-                {isEditableCell ? (
-                  <input
-                    type="text"
-                    name="email"
-                    value={editCell.data.email}
-                    onChange={handleOnChange}
-                  />
-                ) : (
-                  <span>{user.email}</span>
-                )}
-              </td>
-              <td>
-                {isEditableCell ? (
-                  <Select
-                    name="role"
-                    value={editCell.data.role}
-                    options={roleOptions}
-                    onChange={handleOnChange}
-                  />
-                ) : (
-                  <span>{user.role}</span>
-                )}
-              </td>
-              <td>
-                <div className="button-group">
-                  {isEditableCell ? (
-                    <>
-                      <IconButton
-                        className="save"
-                        icon={<CiFloppyDisk />}
-                        onClick={handleSave}
-                      />
-                      <IconButton
-                        className="cancel"
-                        icon={<CiCircleRemove />}
-                        onClick={handleCancel}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <IconButton
-                        className="edit"
-                        icon={<CiEdit />}
-                        id={user.id}
-                        data={user}
-                        onClick={handleEdit}
-                      />
-                      <IconButton
-                        className="delete"
-                        icon={<CiTrash />}
-                        id={user.id}
-                        onClick={handleDelete}
-                      />
-                    </>
-                  )}
-                </div>
-              </td>
-            </tr>
-          );
-        })}
+        {userData.map((user) => (
+          <TableRowMemoized
+            key={user.id}
+            user={user}
+            editCell={editCell}
+            isSaveDisabled={isSaveDisabled}
+            handleSelect={handleSelect}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            handleCancel={handleCancel}
+            handleSave={handleSave}
+            handleOnChange={handleOnChange}
+            roleOptions={roleOptions}
+          />
+        ))}
       </tbody>
     </table>
   );
