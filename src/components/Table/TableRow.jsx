@@ -1,9 +1,10 @@
+import { memo } from "react";
+
 import { CiCircleRemove, CiEdit, CiFloppyDisk, CiTrash } from "react-icons/ci";
 
 import Select from "../Select/Select";
 import Checkbox from "../Checkbox/Checkbox";
 import IconButton from "../IconButton/IconButton";
-import { memo } from "react";
 
 const TableRow = ({
   user,

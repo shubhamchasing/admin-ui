@@ -9,7 +9,6 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
 
   const isLeftArrowButtonsDisabled = currentPage === 1 || currentPage === 0;
   const isRightArrowButtonsDisabled = totalPage === currentPage;
-  // console.log("pagination");
 
   const handleFirstPage = () => {
     onPageChange(1);

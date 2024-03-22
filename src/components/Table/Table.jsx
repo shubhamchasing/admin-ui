@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import TableRowMemoized from "./TableRow";
 import Checkbox from "../Checkbox/Checkbox";
+import { validateData } from "../../utils/validateData";
 import {
   REMOVE_USER,
   SELECT_ALL_USERS,
@@ -10,7 +11,6 @@ import {
 } from "../Dashboard/utils/userReducer";
 
 import "./style.css";
-import { validateData } from "../../utils/validateData";
 // error validation
 
 const roleOptions = [

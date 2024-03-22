@@ -22,11 +22,13 @@ export const userInitialList = {
     totalCount: 0,
   },
   isLoading: true,
+  searchTerm: "",
   pagination: {
     currentPage: 1,
     pageSize: 10,
     totalPage: 1,
   },
+  hasError: false,
 };
 
 const userListReducer = (state, { type, payload }) => {
@@ -60,15 +62,14 @@ const userListReducer = (state, { type, payload }) => {
       };
 
     case SEARCH_USERS: {
-      const updatedRenderedUserList = filterUsers(
-        userList.data,
-        payload.searchTerm
-      );
+      const { searchTerm } = payload;
+      const updatedRenderedUserList = filterUsers(userList.data, searchTerm);
       const totalCount = updatedRenderedUserList.length;
       const totalPage = getTotalPage(totalCount, pagination.pageSize);
       const adjustedCurrentPage = totalPage === 0 ? 0 : 1;
       return {
         ...state,
+        searchTerm,
         renderedUserList: {
           data: updatedRenderedUserList,
           totalCount,
@@ -76,7 +77,23 @@ const userListReducer = (state, { type, payload }) => {
         pagination: {
           ...pagination,
           currentPage: adjustedCurrentPage,
-          totalPage: totalPage,
+          totalPage,
+        },
+      };
+    }
+
+    case RESET_SEARCH: {
+      return {
+        ...state,
+        searchTerm: "",
+        renderedUserList: {
+          data: [...userList.data],
+          totalCount: userList.totalCount,
+        },
+        pagination: {
+          ...pagination,
+          currentPage: 1,
+          totalPage: getTotalPage(userList.totalCount, pagination.pageSize),
         },
       };
     }
@@ -236,6 +253,12 @@ const userListReducer = (state, { type, payload }) => {
         },
       };
 
+    case SET_ERROR:
+      return {
+        ...state,
+        hasError: payload.hasError,
+      };
+
     default:
       throw new Error(`Unknown action type: ${type}`);
   }
@@ -244,12 +267,14 @@ const userListReducer = (state, { type, payload }) => {
 export const SET_USER_LIST = "SET_USER_LIST";
 export const SET_LOADING = "SET_LOADING";
 export const SEARCH_USERS = "SEARCH_USERS";
+export const RESET_SEARCH = "RESET_SEARCH";
 export const UPDATE_USER = "UPDATE_USER";
 export const SELECT_USER = "SELECT_USER";
 export const SELECT_ALL_USERS = "SELECT_ALL_USERS";
 export const REMOVE_USER = "REMOVE_USER";
 export const REMOVE_SELECTED_USERS = "REMOVE_SELECTED_USERS";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_ERROR = "SET_ERROR";
 
 const useUserListState = () => useReducer(userListReducer, userInitialList);
 
