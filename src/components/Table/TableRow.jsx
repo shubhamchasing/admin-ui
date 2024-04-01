@@ -1,6 +1,11 @@
 import { memo } from "react";
 
-import { CiCircleRemove, CiEdit, CiFloppyDisk, CiTrash } from "react-icons/ci";
+import {
+  RiCloseLine,
+  RiDeleteBin6Line,
+  RiEditLine,
+  RiSaveLine,
+} from "react-icons/ri";
 
 import Select from "../Select/Select";
 import Checkbox from "../Checkbox/Checkbox";
@@ -38,15 +43,15 @@ const TableRow = ({
           <td>
             <div className="button-group">
               <IconButton
-                className="edit"
-                icon={<CiEdit />}
+                className="edit-btn"
+                icon={<RiEditLine />}
                 id={user.id}
                 data={user}
                 onClick={handleEdit}
               />
               <IconButton
-                className="delete"
-                icon={<CiTrash />}
+                className="delete-btn"
+                icon={<RiDeleteBin6Line />}
                 id={user.id}
                 onClick={handleDelete}
               />
@@ -89,14 +94,14 @@ const TableRow = ({
           <td>
             <div className="button-group">
               <IconButton
-                className="save"
-                icon={<CiFloppyDisk />}
+                className="save-btn"
+                icon={<RiSaveLine />}
                 isDisabled={isSaveDisabled}
                 onClick={handleSave}
               />
               <IconButton
-                className="cancel"
-                icon={<CiCircleRemove />}
+                className="cancel-btn"
+                icon={<RiCloseLine />}
                 onClick={handleCancel}
               />
             </div>

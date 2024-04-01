@@ -1,6 +1,14 @@
 import { memo } from "react";
 
-// import icon
+import {
+  RiArrowLeftDoubleLine,
+  RiArrowLeftSLine,
+  RiArrowRightDoubleLine,
+  RiArrowRightSLine,
+} from "react-icons/ri";
+
+import "./style.css"
+
 const Pagination = ({ totalPage, currentPage, onPageChange }) => {
   const totalPageList = Array.from(
     { length: totalPage },
@@ -29,22 +37,22 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
   return (
     <div className="pagination">
       <button
-        className={`first-page ${currentPage === 1 ? "disabled" : ""}`}
+        className={`pagination-btn first-page ${currentPage === 1 ? "disabled" : ""}`}
         onClick={handleFirstPage}
         disabled={isLeftArrowButtonsDisabled}
       >
-        {"<<"}
+        <RiArrowLeftDoubleLine />
       </button>
       <button
-        className={`previous-page ${currentPage === 1 ? "disabled" : ""}`}
+        className={`pagination-btn previous-page ${currentPage === 1 ? "disabled" : ""}`}
         onClick={handlePrevPage}
         disabled={isLeftArrowButtonsDisabled}
       >
-        {"<"}
+        <RiArrowLeftSLine />
       </button>
       {totalPageList.map((pageNumber) => (
         <button
-          className={`${pageNumber === currentPage ? "isActive" : ""}`}
+          className={`pagination-btn ${pageNumber === currentPage ? "isActive" : ""}`}
           key={pageNumber}
           onClick={() => handleSelectPage(pageNumber)}
           disabled={currentPage === pageNumber}
@@ -53,18 +61,18 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
         </button>
       ))}
       <button
-        className={`next-page ${currentPage === totalPage ? "disabled" : ""}`}
+        className={`pagination-btn next-page ${currentPage === totalPage ? "disabled" : ""}`}
         onClick={handleNextPage}
         disabled={isRightArrowButtonsDisabled}
       >
-        {">"}
+        <RiArrowRightSLine />
       </button>
       <button
-        className={`last-page ${currentPage === totalPage ? "disabled" : ""}`}
+        className={`pagination-btn last-page ${currentPage === totalPage ? "disabled" : ""}`}
         onClick={handleLastPage}
         disabled={isRightArrowButtonsDisabled}
       >
-        {">>"}
+        <RiArrowRightDoubleLine />
       </button>
     </div>
   );
