@@ -5,7 +5,7 @@ const Checkbox = ({ handleSelect, isSelected, id = null }) => {
   return (
     <input
       type="checkbox"
-      className="checkbox"
+      className="custom-checkbox"
       checked={isSelected}
       onChange={handleOnChange}
     />

@@ -17,9 +17,9 @@ import useUserListState, {
   SET_USER_LIST,
 } from "./utils/userReducer";
 import responseTransformer from "./utils/responseTransformer";
+import "./style.css";
 // handle magic numbers
 // error boundry,spinner
-// search icon
 const Dashboard = () => {
   const [userListState, userListDispatch] = useUserListState();
   const {
@@ -56,7 +56,8 @@ const Dashboard = () => {
   }, [fetchData]);
 
   const onSearch = (event) => {
-    const searchTerm = event.target.value.trim();
+    const searchTerm = event.target.value;
+    // .trim(); check for input fields too
     userListDispatch({
       type: SEARCH_USERS,
       payload: { searchTerm },
@@ -111,10 +112,13 @@ const Dashboard = () => {
       );
     } else {
       return (
-        <div>
-          <Table userData={currentPageUserData} dispatch={userListDispatch} />
+        <>
+          <div className="table-wrapper">
+            <Table userData={currentPageUserData} dispatch={userListDispatch} />
+          </div>
           <div className="footer">
             <Button
+              className="delete-btn"
               onClick={handleDeleteSelected}
               isDisabled={isDeleteSelectedDisabled}
             >
@@ -126,7 +130,7 @@ const Dashboard = () => {
               onPageChange={onPageChange}
             />
           </div>
-        </div>
+        </>
       );
     }
   };
@@ -144,7 +148,7 @@ const Dashboard = () => {
         ) : (
           <FeedbackScreen
             title="Error"
-            message="Failed to fetch data. Please try again."
+            message="Failed to fetch data, Please try again."
             buttonText="Try Again"
             showButton
             onClick={handleTryAgain}
