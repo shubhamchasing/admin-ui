@@ -1,3 +1,5 @@
+import "./style.css"
+
 const IconButton = ({
   icon,
   className,
@@ -13,7 +15,7 @@ const IconButton = ({
   return (
     <button
       type="button"
-      className={`${className}`}
+      className={`icon-btn ${className}`}
       disabled={isDisabled}
       onClick={handleOnClick}
     >

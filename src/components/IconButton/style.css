@@ -1,0 +1,48 @@
+.icon-btn {
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 0;
+  transition: opacity 0.3s;
+}
+
+.icon-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  z-index: -1;
+  transition: background-color 0.3s;
+}
+
+.edit-icon-btn,
+.save-icon-btn {
+  color: var(--primary-color);
+}
+
+.edit-icon-btn:hover::before,
+.save-icon-btn:hover::before {
+  background-color: var(--primary-hover-color);
+}
+
+.cancel-icon-btn,
+.delete-icon-btn {
+  color: var(--warning-color);
+}
+
+.delete-icon-btn:hover::before,
+.cancel-icon-btn:hover::before {
+  background-color: var(--warning-hover-color);
+}
+
+.icon-btn:disabled,
+.icon-btn:disabled::before {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: transparent;
+}

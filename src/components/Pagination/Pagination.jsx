@@ -52,7 +52,7 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
       </button>
       {totalPageList.map((pageNumber) => (
         <button
-          className={`pagination-btn ${pageNumber === currentPage ? "isActive" : ""}`}
+          className={`pagination-btn ${pageNumber === currentPage ? "current-page" : ""}`}
           key={pageNumber}
           onClick={() => handleSelectPage(pageNumber)}
           disabled={currentPage === pageNumber}
