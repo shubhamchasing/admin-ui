@@ -1,22 +1,87 @@
-table,
-th,
-td {
+table {
   border-collapse: collapse;
-  /* border: 2px solid grey; */
+  width: 100%;
+  /* font-size: calc(100% + min(0.25vh, 0.25vw)); */
+  /* border: 1px solid var(--border-color);
+  border-radius: clamp(1rem, 0.5vh + 1rem, 4rem); */
+}
+
+tr {
+  display: grid;
+  grid-template-columns: 0.35fr 1fr 1.25fr 0.5fr 0.5fr;
+  padding: 0rem 1rem;
+  height: clamp(2.5rem, 4vh + 1rem, 5rem);
+  align-items: center;
+  justify-items: start;
+  transition: background-color 0.3s;
+  /* animation: fade-in .6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; */
+}
+
+thead > tr {
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--table-row-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-row-color);
 }
 
 th,
 td {
-  text-align: start;
-  padding: 0.5em 4em;
-  /* vertical-align: middle; */
+  padding: 0 0 0 0.5rem;
+  position: relative;
 }
 
-td:nth-child(4){
-  text-transform:capitalize;
+td:nth-child(2),
+td:nth-child(3),
+th:nth-child(2),
+th:nth-child(3) {
+  word-break: break-all;
+}
+
+td:nth-child(4) {
+  text-transform: capitalize;
+}
+
+.input-table-cell,.dropdown {
+  /* font-size: 0.9rem; */
+  max-width: 100%;
+  width: 100%;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--white);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.dropdown {
+  padding: 0.1rem 0.2rem 0.1rem 0rem;
+  cursor: pointer;
+}
+
+.input-table-cell:focus,
+.dropdown:focus {
+  border-color: var(--primary-color);
+}
+
+.border-color-red,
+.border-color-red:focus {
+  border-color: var(--warning-color);
+}
+
+.error {
+  position: absolute;
+  font-size: 0.6rem;
+  color: var(--warning-color);
+  animation: fade-in 0.3s;
+}
+
+tbody .table-selected-row {
+  background-color: var(--table-selected-bg-color);
 }
 
 .button-group {
   display: flex;
-  gap: 1em;
+  gap: 1rem;
 }

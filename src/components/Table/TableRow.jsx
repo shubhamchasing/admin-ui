@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import {
   RiCloseLine,
-  RiDeleteBin6Line,
+  RiDeleteBin7Line,
   RiEditLine,
   RiSaveLine,
 } from "react-icons/ri";
@@ -26,7 +26,7 @@ const TableRow = ({
   const isEditableCell = editCell.id === user.id;
 
   return (
-    <tr>
+    <tr className={`${user.isSelected ? "table-selected-row" : ""}`}>
       <td>
         <Checkbox
           id={user.id}
@@ -43,15 +43,15 @@ const TableRow = ({
           <td>
             <div className="button-group">
               <IconButton
-                className="edit-btn"
+                className="edit-icon-btn"
                 icon={<RiEditLine />}
                 id={user.id}
                 data={user}
                 onClick={handleEdit}
               />
               <IconButton
-                className="delete-btn"
-                icon={<RiDeleteBin6Line />}
+                className="delete-icon-btn"
+                icon={<RiDeleteBin7Line />}
                 id={user.id}
                 onClick={handleDelete}
               />
@@ -62,25 +62,27 @@ const TableRow = ({
         <>
           <td>
             <input
+              className={`input-table-cell ${editCell.errors.name ? "border-color-red" : ""}`} 
               type="text"
               name="name"
               value={editCell.data.name}
               onChange={handleOnChange}
-              required
+              autoFocus
             />
             {editCell.errors.name && (
-              <span className="error">{editCell.errors.name}</span>
+              <p className="error">{editCell.errors.name}</p>
             )}
           </td>
           <td>
             <input
+              className={`input-table-cell ${editCell.errors.email ? "border-color-red" : ""}`} 
               type="text"
               name="email"
               value={editCell.data.email}
               onChange={handleOnChange}
             />
             {editCell.errors.email && (
-              <span className="error">{editCell.errors.email}</span>
+              <p className="error">{editCell.errors.email}</p>
             )}
           </td>
           <td>
@@ -94,13 +96,13 @@ const TableRow = ({
           <td>
             <div className="button-group">
               <IconButton
-                className="save-btn"
+                className="save-icon-btn"
                 icon={<RiSaveLine />}
                 isDisabled={isSaveDisabled}
                 onClick={handleSave}
               />
               <IconButton
-                className="cancel-btn"
+                className="cancel-icon-btn"
                 icon={<RiCloseLine />}
                 onClick={handleCancel}
               />
