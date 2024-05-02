@@ -1,7 +1,32 @@
+:root {
+  --primary-color: #1284b5;
+  --primary-hover-color: #d9ecf2;
+  --secondary-color: #a5deee;
+  --warning-color: #ff0000;
+  --warning-hover-color: #fddbdb;
+  --border-color: #dddddd;
+  --body-bg-color: #f8fbfc;
+  --table-row-color: var(--body-bg-color);
+  --table-selected-bg-color: #e5edf1;
+  --white: #ffffff;
+  --black: #000000;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Arial", sans-serif;
-  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
