@@ -1,3 +1,6 @@
+import Button from "../Button/Button";
+import "./style.css"
+
 const FeedbackScreen = ({
   title,
   message,
@@ -7,11 +10,15 @@ const FeedbackScreen = ({
 }) => {
   return (
     <div className="feedback-screen">
-      <div className="feedback-screen-content">
+      {/* <div className="feedback-screen-content"> */}
         <h2>{title}</h2>
         <p>{message}</p>
-        {showButton && <button onClick={onClick}>{buttonText}</button>}
-      </div>
+        {showButton && (
+          <Button className="feedback-screen-btn" onClick={onClick}>
+            {buttonText}
+          </Button>
+        )}
+      {/* </div> */}
     </div>
   );
 };
