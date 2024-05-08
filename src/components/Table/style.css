@@ -4,6 +4,7 @@ table {
   /* font-size: calc(100% + min(0.25vh, 0.25vw)); */
   /* border: 1px solid var(--border-color);
   border-radius: clamp(1rem, 0.5vh + 1rem, 4rem); */
+  font-size: 1rem;
 }
 
 tr {
@@ -43,7 +44,8 @@ td:nth-child(4) {
   text-transform: capitalize;
 }
 
-.input-table-cell,.dropdown {
+.input-table-cell,
+.dropdown {
   /* font-size: 0.9rem; */
   max-width: 100%;
   width: 100%;

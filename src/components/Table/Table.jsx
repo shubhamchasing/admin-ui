@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import TableRowMemoized from "./TableRow";
 import Checkbox from "../Checkbox/Checkbox";
@@ -11,11 +11,10 @@ import {
 } from "../Dashboard/utils/userReducer";
 
 import "./style.css";
-// error validation
 
 const roleOptions = [
-  { label: "Member", value: "Member" },
-  { label: "Admin", value: "Admin" },
+  { label: "Member", value: "member" },
+  { label: "Admin", value: "admin" },
 ];
 
 const initialState = {
@@ -27,8 +26,19 @@ const initialState = {
 const Table = ({ userData, dispatch }) => {
   const [editCell, setEditCell] = useState(initialState);
 
-  const isAllSelected =
-    userData.length > 0 ? userData.every((user) => user.isSelected) : false;
+  const userSelectionInfo = useMemo(() => {
+    if (userData.length > 0) {
+      const isAllSelected = userData.every((user) => user.isSelected);
+      const someSelected = userData.some((user) => user.isSelected);
+      const isIndeterminate = someSelected && !isAllSelected;
+
+      return { isAllSelected, isIndeterminate };
+    } else {
+      return { isAllSelected: false, isIndeterminate: false };
+    }
+  }, [userData]);
+
+  const { isAllSelected, isIndeterminate } = userSelectionInfo;
 
   const isSaveDisabled = (() => {
     const errorValueArray = Object.values(editCell.errors);
@@ -105,6 +115,7 @@ const Table = ({ userData, dispatch }) => {
             <Checkbox
               isSelected={isAllSelected}
               handleSelect={handleAllSelect}
+              indeterminate={isIndeterminate}
             />
           </th>
           <th>Name</th>

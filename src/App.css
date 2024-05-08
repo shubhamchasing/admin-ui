@@ -34,9 +34,3 @@ button {
   background-color: transparent;
 }
 
-/* checkbox */
-.custom-checkbox {
-  cursor: pointer;
-  accent-color: var(--primary-color);
-  /* vertical-align: middle; */
-}
