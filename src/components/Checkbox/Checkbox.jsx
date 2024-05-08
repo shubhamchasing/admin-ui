@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./style.css"
+
 const Checkbox = ({
   handleSelect,
   isSelected,
@@ -15,7 +16,6 @@ const Checkbox = ({
   }, [indeterminate]);
 
   const handleOnChange = (event) => {
-    // console.log(event);
     handleSelect(event.target.checked, id);
   };
 

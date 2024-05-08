@@ -40,5 +40,5 @@
 }
 
 .custom-checkbox:indeterminate:hover::before{
-    /* filter: brightness(.8); */
+    filter: brightness(.8);
 }

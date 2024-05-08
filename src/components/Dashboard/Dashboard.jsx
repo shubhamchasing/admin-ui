@@ -1,11 +1,13 @@
 import { useCallback, useEffect } from "react";
 
-import Button from "../Button/Button";
-import FeedbackScreen from "../FeedbackScreen/FeedbackScreen";
-import PaginationMemoized from "../Pagination/Pagination";
-import Search from "../Search/Search";
 import Table from "../Table/Table";
+import Button from "../Button/Button";
+import Search from "../Search/Search";
 import { userService } from "../../services/userService";
+import PaginationMemoized from "../Pagination/Pagination";
+import { INITIAL_CURRENT_PAGE } from "../../utils/constant";
+import FeedbackScreen from "../FeedbackScreen/FeedbackScreen";
+import responseTransformer from "./utils/responseTransformer";
 import { getUserDataForCurrentPage } from "../../utils/commonFunctions";
 import useUserListState, {
   REMOVE_SELECTED_USERS,
@@ -16,9 +18,8 @@ import useUserListState, {
   SET_LOADING,
   SET_USER_LIST,
 } from "./utils/userReducer";
-import responseTransformer from "./utils/responseTransformer";
+
 import "./style.css";
-// handle magic numbers
 // error boundry,spinner
 const Dashboard = () => {
   const [userListState, userListDispatch] = useUserListState();
@@ -57,7 +58,6 @@ const Dashboard = () => {
 
   const onSearch = (event) => {
     const searchTerm = event.target.value;
-    // .trim(); check for input fields too
     userListDispatch({
       type: SEARCH_USERS,
       payload: { searchTerm },
@@ -65,7 +65,7 @@ const Dashboard = () => {
   };
 
   const onPageChange = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= totalPage) {
+    if (pageNumber >= INITIAL_CURRENT_PAGE && pageNumber <= totalPage) {
       userListDispatch({ type: SET_CURRENT_PAGE, payload: { pageNumber } });
     }
   };

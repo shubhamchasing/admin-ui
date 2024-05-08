@@ -7,7 +7,9 @@ import {
   RiArrowRightSLine,
 } from "react-icons/ri";
 
-import "./style.css"
+import { INITIAL_CURRENT_PAGE, NO_PAGE } from "../../utils/constant";
+
+import "./style.css";
 
 const Pagination = ({ totalPage, currentPage, onPageChange }) => {
   const totalPageList = Array.from(
@@ -15,11 +17,12 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
     (_, index) => index + 1
   );
 
-  const isLeftArrowButtonsDisabled = currentPage === 1 || currentPage === 0;
+  const isLeftArrowButtonsDisabled =
+    currentPage === INITIAL_CURRENT_PAGE || currentPage === NO_PAGE;
   const isRightArrowButtonsDisabled = totalPage === currentPage;
 
   const handleFirstPage = () => {
-    onPageChange(1);
+    onPageChange(INITIAL_CURRENT_PAGE);
   };
   const handlePrevPage = () => {
     onPageChange(currentPage - 1);
@@ -37,14 +40,14 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
   return (
     <div className="pagination">
       <button
-        className={`pagination-btn first-page ${currentPage === 1 ? "disabled" : ""}`}
+        className={`pagination-btn first-page`}
         onClick={handleFirstPage}
         disabled={isLeftArrowButtonsDisabled}
       >
         <RiArrowLeftDoubleLine />
       </button>
       <button
-        className={`pagination-btn previous-page ${currentPage === 1 ? "disabled" : ""}`}
+        className={`pagination-btn previous-page`}
         onClick={handlePrevPage}
         disabled={isLeftArrowButtonsDisabled}
       >
@@ -52,23 +55,25 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
       </button>
       {totalPageList.map((pageNumber) => (
         <button
-          className={`pagination-btn ${pageNumber === currentPage ? "current-page" : ""}`}
+          className={`pagination-btn ${
+            pageNumber === currentPage ? "current-page" : ""
+          }`}
           key={pageNumber}
           onClick={() => handleSelectPage(pageNumber)}
-          disabled={currentPage === pageNumber}
+          disabled={pageNumber === currentPage}
         >
           {pageNumber}
         </button>
       ))}
       <button
-        className={`pagination-btn next-page ${currentPage === totalPage ? "disabled" : ""}`}
+        className={`pagination-btn next-page`}
         onClick={handleNextPage}
         disabled={isRightArrowButtonsDisabled}
       >
         <RiArrowRightSLine />
       </button>
       <button
-        className={`pagination-btn last-page ${currentPage === totalPage ? "disabled" : ""}`}
+        className={`pagination-btn last-page`}
         onClick={handleLastPage}
         disabled={isRightArrowButtonsDisabled}
       >

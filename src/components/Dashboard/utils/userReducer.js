@@ -1,6 +1,12 @@
 import { useReducer } from "react";
 
 import {
+  DEFAULT_PAGE_SIZE,
+  INITIAL_CURRENT_PAGE,
+  INITIAL_TOTAL_PAGE,
+  NO_PAGE,
+} from "../../../utils/constant";
+import {
   filterUsers,
   getAdjustedCurrentPage,
   getCurrentPageUserIdList,
@@ -24,9 +30,9 @@ export const userInitialList = {
   isLoading: true,
   searchTerm: "",
   pagination: {
-    currentPage: 1,
-    pageSize: 10,
-    totalPage: 1,
+    currentPage: INITIAL_CURRENT_PAGE,
+    pageSize: DEFAULT_PAGE_SIZE,
+    totalPage: INITIAL_TOTAL_PAGE,
   },
   hasError: false,
 };
@@ -66,7 +72,8 @@ const userListReducer = (state, { type, payload }) => {
       const updatedRenderedUserList = filterUsers(userList.data, searchTerm);
       const totalCount = updatedRenderedUserList.length;
       const totalPage = getTotalPage(totalCount, pagination.pageSize);
-      const adjustedCurrentPage = totalPage === 0 ? 0 : 1;
+      const adjustedCurrentPage =
+        totalPage === NO_PAGE ? NO_PAGE : INITIAL_CURRENT_PAGE;
       return {
         ...state,
         searchTerm,
@@ -92,7 +99,7 @@ const userListReducer = (state, { type, payload }) => {
         },
         pagination: {
           ...pagination,
-          currentPage: 1,
+          currentPage: INITIAL_CURRENT_PAGE,
           totalPage: getTotalPage(userList.totalCount, pagination.pageSize),
         },
       };

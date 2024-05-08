@@ -62,7 +62,9 @@ const TableRow = ({
         <>
           <td>
             <input
-              className={`input-table-cell ${editCell.errors.name ? "border-color-red" : ""}`} 
+              className={`input-table-cell ${
+                editCell.errors.name ? "border-color-red" : ""
+              }`}
               type="text"
               name="name"
               value={editCell.data.name}
@@ -75,7 +77,9 @@ const TableRow = ({
           </td>
           <td>
             <input
-              className={`input-table-cell ${editCell.errors.email ? "border-color-red" : ""}`} 
+              className={`input-table-cell ${
+                editCell.errors.email ? "border-color-red" : ""
+              }`}
               type="text"
               name="email"
               value={editCell.data.email}

@@ -1,4 +1,5 @@
 import Button from "../Button/Button";
+
 import "./style.css"
 
 const FeedbackScreen = ({
@@ -10,7 +11,6 @@ const FeedbackScreen = ({
 }) => {
   return (
     <div className="feedback-screen">
-      {/* <div className="feedback-screen-content"> */}
         <h2>{title}</h2>
         <p>{message}</p>
         {showButton && (
@@ -18,7 +18,6 @@ const FeedbackScreen = ({
             {buttonText}
           </Button>
         )}
-      {/* </div> */}
     </div>
   );
 };

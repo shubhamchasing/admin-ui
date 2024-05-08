@@ -1,2 +1,4 @@
-export const USER_API =
-  "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
+export const INITIAL_CURRENT_PAGE = 1;
+export const INITIAL_TOTAL_PAGE = 1;
+export const DEFAULT_PAGE_SIZE = 10;
+export const NO_PAGE = 0;
