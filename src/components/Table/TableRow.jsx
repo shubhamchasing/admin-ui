@@ -27,7 +27,7 @@ const TableRow = ({
 
   return (
     <tr className={`${user.isSelected ? "table-selected-row" : ""}`}>
-      <td>
+      <td data-label="Checkbox">
         <Checkbox
           id={user.id}
           isSelected={user.isSelected}
@@ -37,10 +37,10 @@ const TableRow = ({
 
       {!isEditableCell ? (
         <>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>{user.role}</td>
-          <td>
+          <td data-label="Name">{user.name}</td>
+          <td data-label="Email">{user.email}</td>
+          <td data-label="Role">{user.role}</td>
+          <td data-label="Actions">
             <div className="button-group">
               <IconButton
                 className="edit-icon-btn"
@@ -60,7 +60,8 @@ const TableRow = ({
         </>
       ) : (
         <>
-          <td>
+          <td data-label="Name" className="input-container">
+            {/* <div className="input-container"> */}
             <input
               className={`input-table-cell ${
                 editCell.errors.name ? "border-color-red" : ""
@@ -74,8 +75,9 @@ const TableRow = ({
             {editCell.errors.name && (
               <p className="error">{editCell.errors.name}</p>
             )}
+            {/* </div> */}
           </td>
-          <td>
+          <td data-label="Email"  className="input-container">
             <input
               className={`input-table-cell ${
                 editCell.errors.email ? "border-color-red" : ""
@@ -89,7 +91,7 @@ const TableRow = ({
               <p className="error">{editCell.errors.email}</p>
             )}
           </td>
-          <td>
+          <td data-label="Role">
             <Select
               name="role"
               value={editCell.data.role}
@@ -97,7 +99,7 @@ const TableRow = ({
               onChange={handleOnChange}
             />
           </td>
-          <td>
+          <td data-label="Actions">
             <div className="button-group">
               <IconButton
                 className="save-icon-btn"

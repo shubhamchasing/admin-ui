@@ -1,6 +1,7 @@
 .pagination {
   display: flex;
   gap: 1rem;
+  background-color: inherit;
 }
 
 .pagination-btn {
@@ -42,4 +43,12 @@
 .next-page:disabled,
 .last-page:disabled {
   opacity: 0.6;
+}
+
+@media (max-width: 650px) {
+  .pagination {
+    gap: 0rem;
+    width: 100%;
+    justify-content: space-around;
+  }
 }

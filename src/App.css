@@ -7,6 +7,12 @@
   animation: fade-in 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
+@media (max-width: 650px) {
+  .app {
+    padding:0rem
+  }
+}
+
 button {
   display: inline-flex;
   cursor: pointer;
@@ -33,4 +39,3 @@ button {
 .btn:disabled:hover {
   background-color: transparent;
 }
-

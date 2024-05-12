@@ -111,7 +111,7 @@ const Table = ({ userData, dispatch }) => {
     <table>
       <thead>
         <tr>
-          <th>
+          <th data-label="Master Checkbox">
             <Checkbox
               isSelected={isAllSelected}
               handleSelect={handleAllSelect}
