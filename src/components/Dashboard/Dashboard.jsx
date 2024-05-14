@@ -20,7 +20,8 @@ import useUserListState, {
 } from "./utils/userReducer";
 
 import "./style.css";
-// error boundry,spinner
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
+
 const Dashboard = () => {
   const [userListState, userListDispatch] = useUserListState();
   const {
@@ -142,19 +143,21 @@ const Dashboard = () => {
         searchTerm={searchTerm}
         onSearch={onSearch}
       />
-      {!isLoading &&
-        (!hasError ? (
-          renderMainContent()
-        ) : (
-          <FeedbackScreen
-            title="Error"
-            message="Failed to fetch data, Please try again."
-            buttonText="Try Again"
-            showButton
-            onClick={handleTryAgain}
-          />
-        ))}
+      {isLoading ? (
+        <LoadingScreen />
+      ) : !hasError ? (
+        renderMainContent()
+      ) : (
+        <FeedbackScreen
+          title="Error"
+          message="Failed to fetch data, Please try again."
+          buttonText="Try Again"
+          showButton
+          onClick={handleTryAgain}
+        />
+      )}
     </div>
   );
 };
+
 export default Dashboard;
