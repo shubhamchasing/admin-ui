@@ -60,44 +60,48 @@ const TableRow = ({
         </>
       ) : (
         <>
-          <td data-label="Name" className="input-container">
-            {/* <div className="input-container"> */}
-            <input
-              className={`input-table-cell ${
-                editCell.errors.name ? "border-color-red" : ""
-              }`}
-              type="text"
-              name="name"
-              value={editCell.data.name}
-              onChange={handleOnChange}
-              autoFocus
-            />
-            {editCell.errors.name && (
-              <p className="error">{editCell.errors.name}</p>
-            )}
-            {/* </div> */}
+          <td data-label="Name">
+            <div className="input-container">
+              <input
+                className={`input-table-cell ${
+                  editCell.errors.name ? "border-color-red" : ""
+                }`}
+                type="text"
+                name="name"
+                value={editCell.data.name}
+                onChange={handleOnChange}
+                autoFocus
+              />
+              {editCell.errors.name && (
+                <p className="error">{editCell.errors.name}</p>
+              )}
+            </div>
           </td>
-          <td data-label="Email"  className="input-container">
-            <input
-              className={`input-table-cell ${
-                editCell.errors.email ? "border-color-red" : ""
-              }`}
-              type="text"
-              name="email"
-              value={editCell.data.email}
-              onChange={handleOnChange}
-            />
-            {editCell.errors.email && (
-              <p className="error">{editCell.errors.email}</p>
-            )}
+          <td data-label="Email">
+            <div className="input-container">
+              <input
+                className={`input-table-cell ${
+                  editCell.errors.email ? "border-color-red" : ""
+                }`}
+                type="text"
+                name="email"
+                value={editCell.data.email}
+                onChange={handleOnChange}
+              />
+              {editCell.errors.email && (
+                <p className="error">{editCell.errors.email}</p>
+              )}
+            </div>
           </td>
           <td data-label="Role">
-            <Select
-              name="role"
-              value={editCell.data.role}
-              options={roleOptions}
-              onChange={handleOnChange}
-            />
+            <div className="input-container">
+              <Select
+                name="role"
+                value={editCell.data.role}
+                options={roleOptions}
+                onChange={handleOnChange}
+              />
+            </div>
           </td>
           <td data-label="Actions">
             <div className="button-group">

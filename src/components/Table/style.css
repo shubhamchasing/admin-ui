@@ -111,7 +111,7 @@ tbody tr.table-selected-row {
     height: auto;
     grid-template-columns: auto;
     /* grid-template-rows: auto; */
-    gap: 0.7rem;
+    gap: 0.8rem;
     padding: 1rem;
     /* display: block; */
     margin: 0.5rem 1rem;
@@ -138,11 +138,6 @@ tbody tr.table-selected-row {
     font-size: 0.9rem;
     opacity: 0.7;
     /* margin-block: auto; */
-  }
-
-  .error {
-    bottom: -50%;
-    left: 36%;
   }
 
   .button-group {
