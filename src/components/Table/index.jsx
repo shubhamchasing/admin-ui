@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 
-import TableRowMemoized from "./TableRow";
-import Checkbox from "../Checkbox/Checkbox";
+import TableRowMemoized from "./components/TableRow";
+import Checkbox from "../Checkbox";
 import { validateData } from "../../utils/validateData";
 import {
   REMOVE_USER,

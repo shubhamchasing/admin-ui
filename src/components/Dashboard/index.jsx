@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from "react";
 
-import Table from "../Table/Table";
-import Button from "../Button/Button";
-import Search from "../Search/Search";
+import Table from "../Table";
+import Button from "../Button";
+import Search from "../Search";
 import { userService } from "../../services/userService";
-import PaginationMemoized from "../Pagination/Pagination";
+import PaginationMemoized from "../Pagination";
 import { INITIAL_CURRENT_PAGE } from "../../utils/constant";
-import FeedbackScreen from "../FeedbackScreen/FeedbackScreen";
+import FeedbackScreen from "../FeedbackScreen";
 import responseTransformer from "./utils/responseTransformer";
 import { getUserDataForCurrentPage } from "../../utils/commonFunctions";
 import useUserListState, {
@@ -20,7 +20,7 @@ import useUserListState, {
 } from "./utils/userReducer";
 
 import "./style.css";
-import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import LoadingScreen from "../LoadingScreen";
 
 const Dashboard = () => {
   const [userListState, userListDispatch] = useUserListState();

@@ -7,9 +7,9 @@ import {
   RiSaveLine,
 } from "react-icons/ri";
 
-import Select from "../Select/Select";
-import Checkbox from "../Checkbox/Checkbox";
-import IconButton from "../IconButton/IconButton";
+import Select from "../../Select";
+import Checkbox from "../../Checkbox";
+import IconButton from "../../IconButton";
 
 const TableRow = ({
   user,

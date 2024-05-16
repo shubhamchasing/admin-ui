@@ -1,6 +1,6 @@
 import "./App.css";
-import Dashboard from "./components/Dashboard/Dashboard";
-import FeedbackScreen from "./components/FeedbackScreen/FeedbackScreen";
+import Dashboard from "./components/Dashboard";
+import FeedbackScreen from "./components/FeedbackScreen";
 import ErrorBoundary from "./errorBoundary/ErrorBoundary";
 
 function App() {
