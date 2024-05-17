@@ -1,3 +1,5 @@
+import "./style.css";
+
 const Button = ({ children, onClick, isDisabled = false, className }) => {
   return (
     <button

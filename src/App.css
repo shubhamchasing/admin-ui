@@ -12,30 +12,3 @@
     padding:0rem
   }
 }
-
-button {
-  display: inline-flex;
-  cursor: pointer;
-}
-
-.btn {
-  background-color: var(--white);
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s, opacity 0.3s;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.btn:disabled:hover {
-  background-color: transparent;
-}
