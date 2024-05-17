@@ -38,7 +38,7 @@ const Pagination = ({ totalPage, currentPage, onPageChange }) => {
   };
 
   return (
-    <div className="pagination">
+    <div className="pagination-bar">
       <button
         className={`pagination-btn first-page`}
         onClick={handleFirstPage}

@@ -2,12 +2,12 @@
   --primary-color: #1284b5;
   --primary-hover-color: #d9ecf2;
   --secondary-color: #a5deee;
-  --warning-color: #ff0000;
-  --warning-hover-color: #fddbdb;
+  --danger-color: #ff0000;
+  --danger-hover-color: #fddbdb;
   --border-color: #dddddd;
   --body-bg-color: #f8fbfc;
   --table-row-color: var(--body-bg-color);
-  --table-selected-bg-color: #e5edf1;
+  --table-selected-row-color: #e5edf1;
   --white: #ffffff;
   --black: #000000;
 }

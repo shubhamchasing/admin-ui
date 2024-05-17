@@ -20,24 +20,24 @@
   transition: background-color 0.3s;
 }
 
-.edit-icon-btn,
-.save-icon-btn {
+.edit,
+.save {
   color: var(--primary-color);
 }
 
-.edit-icon-btn:hover::before,
-.save-icon-btn:hover::before {
+.edit:hover::before,
+.save:hover::before {
   background-color: var(--primary-hover-color);
 }
 
-.cancel-icon-btn,
-.delete-icon-btn {
-  color: var(--warning-color);
+.cancel,
+.delete {
+  color: var(--danger-color);
 }
 
-.delete-icon-btn:hover::before,
-.cancel-icon-btn:hover::before {
-  background-color: var(--warning-hover-color);
+.delete:hover::before,
+.cancel:hover::before {
+  background-color: var(--danger-hover-color);
 }
 
 .icon-btn:disabled,

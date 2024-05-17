@@ -29,7 +29,7 @@ tr {
   /* animation: fade-in .6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both; */
 }
 
-tr:nth-child(even) {
+tbody > tr:nth-child(even) {
   background-color: var(--table-row-color);
 }
 
@@ -49,12 +49,12 @@ td:nth-child(4) {
   text-transform: capitalize;
 }
 
-tbody tr.table-selected-row {
-  background-color: var(--table-selected-bg-color);
+tbody > tr.table-selected-row {
+  background-color: var(--table-selected-row-color);
 }
 
-.input-table-cell,
-.dropdown {
+.table-input-box,
+.table-dropdown {
   /* font-size: 0.9rem; */
   max-width: 100%;
   width: 100%;
@@ -65,37 +65,37 @@ tbody tr.table-selected-row {
   transition: border-color 0.3s;
 }
 
-.input-table-cell {
+.table-input-box {
   padding: 0.1rem 0.2rem;
 }
 
-.input-container {
+.table-cell-container {
   position: relative;
 }
 
-.dropdown {
+.table-dropdown {
   padding: 0.05rem 0.2rem 0.05rem 0rem;
   cursor: pointer;
 }
 
-.input-table-cell:focus,
-.dropdown:focus {
+.table-input-box:focus,
+.table-dropdown:focus {
   border-color: var(--primary-color);
 }
 
 .border-color-red,
 .border-color-red:focus {
-  border-color: var(--warning-color);
+  border-color: var(--danger-color);
 }
 
-.error {
+.input-error {
   position: absolute;
   font-size: 0.6rem;
-  color: var(--warning-color);
+  color: var(--danger-color);
   animation: fade-in 0.3s;
 }
 
-.button-group {
+.action-button-group {
   display: flex;
   gap: 1rem;
 }
@@ -122,7 +122,7 @@ tbody tr.table-selected-row {
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
 
-  tr:nth-child(even) {
+  tbody > tr:nth-child(even) {
     background-color: var(--white);
   }
 
@@ -140,7 +140,7 @@ tbody tr.table-selected-row {
     /* margin-block: auto; */
   }
 
-  .button-group {
+  .action-button-group {
     gap: 1.5rem;
   }
 }

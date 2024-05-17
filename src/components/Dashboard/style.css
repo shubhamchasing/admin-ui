@@ -24,14 +24,6 @@
   justify-content: space-between;
 }
 
-.delete-btn {
-  border-color: var(--warning-color);
-  color: var(--warning-color);
-}
-
-.delete-btn:hover {
-  background-color: var(--warning-hover-color);
-}
 
 @media (max-width: 650px) {
   .container {
@@ -49,7 +41,7 @@
     -ms-overflow-style: none;
   }
 
-  .delete-btn {
+  .btn-danger {
     display: none;
     /* position: absolute;
     z-index: 10;

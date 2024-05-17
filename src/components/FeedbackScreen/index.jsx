@@ -14,7 +14,7 @@ const FeedbackScreen = ({
         <h2>{title}</h2>
         <p>{message}</p>
         {showButton && (
-          <Button className="feedback-screen-btn" onClick={onClick}>
+          <Button className="btn-primary" onClick={onClick}>
             {buttonText}
           </Button>
         )}

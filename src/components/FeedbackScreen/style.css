@@ -5,12 +5,3 @@
   justify-content: center;
   gap: 2rem;
 }
-
-.feedback-screen-btn {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-}
-
-.feedback-screen-btn:hover {
-  background-color: var(--primary-hover-color);
-}

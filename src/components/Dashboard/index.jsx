@@ -119,7 +119,7 @@ const Dashboard = () => {
           </div>
           <div className="footer">
             <Button
-              className="delete-btn"
+              className="btn-danger"
               onClick={handleDeleteSelected}
               isDisabled={isDeleteSelectedDisabled}
             >

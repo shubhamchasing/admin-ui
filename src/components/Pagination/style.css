@@ -1,4 +1,4 @@
-.pagination {
+.pagination-bar {
   display: flex;
   gap: 1rem;
   background-color: inherit;
@@ -46,7 +46,7 @@
 }
 
 @media (max-width: 650px) {
-  .pagination {
+  .pagination-bar {
     gap: 0rem;
     width: 100%;
     justify-content: space-around;

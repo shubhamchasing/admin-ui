@@ -24,3 +24,21 @@ button {
 .btn:disabled:hover {
   background-color: transparent;
 }
+
+.btn-primary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.btn-danger {
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-hover-color);
+}

@@ -41,16 +41,16 @@ const TableRow = ({
           <td data-label="Email">{user.email}</td>
           <td data-label="Role">{user.role}</td>
           <td data-label="Actions">
-            <div className="button-group">
+            <div className="action-button-group">
               <IconButton
-                className="edit-icon-btn"
+                className="edit"
                 icon={<RiEditLine />}
                 id={user.id}
                 data={user}
                 onClick={handleEdit}
               />
               <IconButton
-                className="delete-icon-btn"
+                className="delete"
                 icon={<RiDeleteBin7Line />}
                 id={user.id}
                 onClick={handleDelete}
@@ -61,9 +61,9 @@ const TableRow = ({
       ) : (
         <>
           <td data-label="Name">
-            <div className="input-container">
+            <div className="table-cell-container">
               <input
-                className={`input-table-cell ${
+                className={`table-input-box ${
                   editCell.errors.name ? "border-color-red" : ""
                 }`}
                 type="text"
@@ -73,14 +73,14 @@ const TableRow = ({
                 autoFocus
               />
               {editCell.errors.name && (
-                <p className="error">{editCell.errors.name}</p>
+                <p className="input-error">{editCell.errors.name}</p>
               )}
             </div>
           </td>
           <td data-label="Email">
-            <div className="input-container">
+            <div className="table-cell-container">
               <input
-                className={`input-table-cell ${
+                className={`table-input-box ${
                   editCell.errors.email ? "border-color-red" : ""
                 }`}
                 type="text"
@@ -89,30 +89,31 @@ const TableRow = ({
                 onChange={handleOnChange}
               />
               {editCell.errors.email && (
-                <p className="error">{editCell.errors.email}</p>
+                <p className="input-error">{editCell.errors.email}</p>
               )}
             </div>
           </td>
           <td data-label="Role">
-            <div className="input-container">
+            <div className="table-cell-container">
               <Select
                 name="role"
                 value={editCell.data.role}
                 options={roleOptions}
                 onChange={handleOnChange}
+                className="table-dropdown"
               />
             </div>
           </td>
           <td data-label="Actions">
-            <div className="button-group">
+            <div className="action-button-group">
               <IconButton
-                className="save-icon-btn"
+                className="save"
                 icon={<RiSaveLine />}
                 isDisabled={isSaveDisabled}
                 onClick={handleSave}
               />
               <IconButton
-                className="cancel-icon-btn"
+                className="cancel"
                 icon={<RiCloseLine />}
                 onClick={handleCancel}
               />
