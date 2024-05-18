@@ -1,4 +1,4 @@
-import "./style.css"
+import "./style.css";
 
 const IconButton = ({
   icon,
@@ -6,7 +6,7 @@ const IconButton = ({
   onClick,
   id = null,
   data = null,
-  isDisabled = false,
+  disabled = false,
 }) => {
   const handleOnClick = () => {
     onClick(id, data);
@@ -16,7 +16,7 @@ const IconButton = ({
     <button
       type="button"
       className={`icon-btn ${className}`}
-      disabled={isDisabled}
+      disabled={disabled}
       onClick={handleOnClick}
     >
       {icon}

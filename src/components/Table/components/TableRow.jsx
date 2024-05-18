@@ -30,35 +30,12 @@ const TableRow = ({
       <td data-label="Checkbox">
         <Checkbox
           id={user.id}
-          isSelected={user.isSelected}
-          handleSelect={handleSelect}
+          checked={user.isSelected}
+          onChange={handleSelect}
         />
       </td>
 
-      {!isEditableCell ? (
-        <>
-          <td data-label="Name">{user.name}</td>
-          <td data-label="Email">{user.email}</td>
-          <td data-label="Role">{user.role}</td>
-          <td data-label="Actions">
-            <div className="action-button-group">
-              <IconButton
-                className="edit"
-                icon={<RiEditLine />}
-                id={user.id}
-                data={user}
-                onClick={handleEdit}
-              />
-              <IconButton
-                className="delete"
-                icon={<RiDeleteBin7Line />}
-                id={user.id}
-                onClick={handleDelete}
-              />
-            </div>
-          </td>
-        </>
-      ) : (
+      {isEditableCell ? (
         <>
           <td data-label="Name">
             <div className="table-cell-container">
@@ -109,13 +86,36 @@ const TableRow = ({
               <IconButton
                 className="save"
                 icon={<RiSaveLine />}
-                isDisabled={isSaveDisabled}
+                disabled={isSaveDisabled}
                 onClick={handleSave}
               />
               <IconButton
                 className="cancel"
                 icon={<RiCloseLine />}
                 onClick={handleCancel}
+              />
+            </div>
+          </td>
+        </>
+      ) : (
+        <>
+          <td data-label="Name">{user.name}</td>
+          <td data-label="Email">{user.email}</td>
+          <td data-label="Role">{user.role}</td>
+          <td data-label="Actions">
+            <div className="action-button-group">
+              <IconButton
+                className="edit"
+                icon={<RiEditLine />}
+                id={user.id}
+                data={user}
+                onClick={handleEdit}
+              />
+              <IconButton
+                className="delete"
+                icon={<RiDeleteBin7Line />}
+                id={user.id}
+                onClick={handleDelete}
               />
             </div>
           </td>

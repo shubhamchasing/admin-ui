@@ -1,16 +1,16 @@
 import { RiSearchLine } from "react-icons/ri";
 import "./style.css";
 
-const Search = ({ placeholder, onSearch, searchTerm }) => {
+const Search = ({ placeholder, onChange, value }) => {
   return (
     <div className="search-bar">
       <RiSearchLine className="search-icon" />
       <input
         type="text"
         className="search"
-        value={searchTerm}
+        value={value}
         placeholder={placeholder}
-        onChange={onSearch}
+        onChange={onChange}
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import "./style.css"
+import "./style.css";
 
 const Checkbox = ({
-  handleSelect,
-  isSelected,
+  onChange,
+  checked = false,
   id = null,
   indeterminate = false,
 }) => {
@@ -16,7 +16,7 @@ const Checkbox = ({
   }, [indeterminate]);
 
   const handleOnChange = (event) => {
-    handleSelect(event.target.checked, id);
+    onChange(event.target.checked, id);
   };
 
   return (
@@ -24,11 +24,11 @@ const Checkbox = ({
       <input
         type="checkbox"
         className="custom-checkbox"
-        checked={isSelected}
+        checked={checked}
         onChange={handleOnChange}
         ref={checkboxRef}
       />
-     </label>
+    </label>
   );
 };
 

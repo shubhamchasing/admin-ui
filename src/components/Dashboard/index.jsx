@@ -121,7 +121,7 @@ const Dashboard = () => {
             <Button
               className="btn-danger"
               onClick={handleDeleteSelected}
-              isDisabled={isDeleteSelectedDisabled}
+              disabled={isDeleteSelectedDisabled}
             >
               Delete Selected
             </Button>
@@ -140,14 +140,12 @@ const Dashboard = () => {
     <div className="container">
       <Search
         placeholder="Search by name, email or role"
-        searchTerm={searchTerm}
-        onSearch={onSearch}
+        value={searchTerm}
+        onChange={onSearch}
       />
       {isLoading ? (
         <LoadingScreen />
-      ) : !hasError ? (
-        renderMainContent()
-      ) : (
+      ) : hasError ? (
         <FeedbackScreen
           title="Error"
           message="Failed to fetch data, Please try again."
@@ -155,6 +153,8 @@ const Dashboard = () => {
           showButton
           onClick={handleTryAgain}
         />
+      ) : (
+        renderMainContent()
       )}
     </div>
   );

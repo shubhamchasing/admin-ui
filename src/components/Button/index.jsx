@@ -1,11 +1,11 @@
 import "./style.css";
 
-const Button = ({ children, onClick, isDisabled = false, className }) => {
+const Button = ({ children, onClick, disabled = false, className }) => {
   return (
     <button
       type="button"
       className={`btn ${className}`}
-      disabled={isDisabled}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}
