@@ -107,14 +107,9 @@ tbody > tr.table-selected-row {
 }
 
 @media (max-width: 650px) {
-  thead 
-  /* , tbody > tr > td:where([data-label="Checkbox"]) */
-   th:not(:first-child) {
+  thead,
+  tbody > tr > td:where([data-label="Checkbox"]) {
     display: none;
-  }
-
-  thead > tr {
-    margin-inline: 1rem;
   }
 
   tbody > tr {
@@ -132,18 +127,17 @@ tbody > tr.table-selected-row {
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
 
-  tr:nth-child(even) {
+  tbody > tr.table-selected-row {
     background-color: var(--white);
   }
 
   td {
-    display: grid;
     grid-template-columns: 10ch auto;
     gap: 0.5rem;
     height: 1.2rem;
   }
 
-  td:not(:first-child)::before {
+  td::before {
     content: attr(data-label) ": ";
     font-size: 0.9rem;
     opacity: 0.7;
