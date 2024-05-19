@@ -26,7 +26,7 @@ const TableRow = ({
   const isEditableCell = editCell.id === user.id;
 
   return (
-    <tr className={`${user.isSelected ? "table-selected-row" : ""}`}>
+    <tr className={user.isSelected ? "table-selected-row" : ""}>
       <td data-label="Checkbox">
         <Checkbox
           id={user.id}
@@ -34,55 +34,66 @@ const TableRow = ({
           onChange={handleSelect}
         />
       </td>
-
-      {isEditableCell ? (
-        <>
-          <td data-label="Name">
-            <div className="table-cell-container">
-              <input
-                className={`table-input-box ${
-                  editCell.errors.name ? "border-color-red" : ""
-                }`}
-                type="text"
-                name="name"
-                value={editCell.data.name}
-                onChange={handleOnChange}
-                autoFocus
-              />
-              {editCell.errors.name && (
-                <p className="input-error">{editCell.errors.name}</p>
-              )}
-            </div>
-          </td>
-          <td data-label="Email">
-            <div className="table-cell-container">
-              <input
-                className={`table-input-box ${
-                  editCell.errors.email ? "border-color-red" : ""
-                }`}
-                type="text"
-                name="email"
-                value={editCell.data.email}
-                onChange={handleOnChange}
-              />
-              {editCell.errors.email && (
-                <p className="input-error">{editCell.errors.email}</p>
-              )}
-            </div>
-          </td>
-          <td data-label="Role">
-            <div className="table-cell-container">
-              <Select
-                name="role"
-                value={editCell.data.role}
-                options={roleOptions}
-                onChange={handleOnChange}
-                className="table-dropdown"
-              />
-            </div>
-          </td>
-          <td data-label="Actions">
-            <div className="action-button-group">
+      <td data-label="Name">
+        {isEditableCell ? (
+          <div className="table-cell-container ">
+            <input
+              className={`table-input-box ${
+                editCell.errors.name ? "border-color-red" : ""
+              }`}
+              type="text"
+              name="name"
+              value={editCell.data.name}
+              onChange={handleOnChange}
+              autoFocus
+            />
+            {editCell.errors.name && (
+              <p className="input-error">{editCell.errors.name}</p>
+            )}
+          </div>
+        ) : (
+          <div className="truncate">{user.name}</div>
+        )}
+      </td>
+      <td data-label="Email">
+        {isEditableCell ? (
+          <div className="table-cell-container">
+            <input
+              className={`table-input-box ${
+                editCell.errors.email ? "border-color-red" : ""
+              }`}
+              type="text"
+              name="email"
+              value={editCell.data.email}
+              onChange={handleOnChange}
+            />
+            {editCell.errors.email && (
+              <p className="input-error">{editCell.errors.email}</p>
+            )}
+          </div>
+        ) : (
+          <div className="truncate">{user.email}</div>
+        )}
+      </td>
+      <td data-label="Role">
+        {isEditableCell ? (
+          <div className="table-cell-container">
+            <Select
+              name="role"
+              value={editCell.data.role}
+              options={roleOptions}
+              onChange={handleOnChange}
+              className="table-dropdown"
+            />
+          </div>
+        ) : (
+          <div className="truncate">{user.role}</div>
+        )}
+      </td>
+      <td data-label="Actions">
+        <div className="action-button-group">
+          {isEditableCell ? (
+            <>
               <IconButton
                 className="save"
                 icon={<RiSaveLine />}
@@ -94,16 +105,9 @@ const TableRow = ({
                 icon={<RiCloseLine />}
                 onClick={handleCancel}
               />
-            </div>
-          </td>
-        </>
-      ) : (
-        <>
-          <td data-label="Name">{user.name}</td>
-          <td data-label="Email">{user.email}</td>
-          <td data-label="Role">{user.role}</td>
-          <td data-label="Actions">
-            <div className="action-button-group">
+            </>
+          ) : (
+            <>
               <IconButton
                 className="edit"
                 icon={<RiEditLine />}
@@ -117,10 +121,10 @@ const TableRow = ({
                 id={user.id}
                 onClick={handleDelete}
               />
-            </div>
-          </td>
-        </>
-      )}
+            </>
+          )}
+        </div>
+      </td>
     </tr>
   );
 };

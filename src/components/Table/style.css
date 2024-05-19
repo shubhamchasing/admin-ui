@@ -20,7 +20,7 @@ table > thead {
 
 tr {
   display: grid;
-  grid-template-columns: 0.35fr 1fr 1.25fr 0.5fr 0.5fr;
+  grid-template-columns: 0.35fr 1fr 1fr 0.5fr 0.5fr;
   padding: 0rem 1rem;
   height: clamp(2.5rem, 4vh + 1rem, 5rem);
   align-items: center;
@@ -36,13 +36,12 @@ tbody > tr:nth-child(even) {
 th,
 td {
   padding: 0 0 0 0.5rem;
+  display: grid;
 }
 
 td:nth-child(2),
-td:nth-child(3),
-th:nth-child(2),
-th:nth-child(3) {
-  word-break: break-all;
+td:nth-child(3) {
+  width: 100%;
 }
 
 td:nth-child(4) {
@@ -51,6 +50,10 @@ td:nth-child(4) {
 
 tbody > tr.table-selected-row {
   background-color: var(--table-selected-row-color);
+}
+
+.table-cell-container {
+  position: relative;
 }
 
 .table-input-box,
@@ -67,10 +70,6 @@ tbody > tr.table-selected-row {
 
 .table-input-box {
   padding: 0.1rem 0.2rem;
-}
-
-.table-cell-container {
-  position: relative;
 }
 
 .table-dropdown {
@@ -93,6 +92,13 @@ tbody > tr.table-selected-row {
   font-size: 0.6rem;
   color: var(--danger-color);
   animation: fade-in 0.3s;
+}
+
+.truncate {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .action-button-group {
