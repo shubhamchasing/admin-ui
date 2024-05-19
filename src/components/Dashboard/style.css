@@ -42,10 +42,10 @@
   }
 
   .btn-danger {
-    display: none;
-    /* position: absolute;
+    /* display: none; */
+    position: absolute;
     z-index: 10;
     top: 10.75%;
-    right: 7%; */
+    right: 7%;
   }
 }
