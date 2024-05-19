@@ -15,11 +15,6 @@
   background-color: var(--primary-color);
   border-radius: 0.15rem;
   position: absolute;
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  /* top:0;
-  left:0; */
 }
 
 .custom-checkbox:indeterminate::after {
@@ -28,13 +23,6 @@
   height: 100%;
   background: var(--white);
   position: absolute;
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  clip-path: inset(40% 15% 40% 15%); */
-  
-  /* top:0;
-  left:0; */
   transform: scale(0.7);
   transform-origin: center;
   clip-path: inset(36% 1% 36% 1%);
