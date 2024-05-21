@@ -120,7 +120,8 @@ tbody > tr.table-selected-row {
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
 
-  tbody > tr.table-selected-row {
+  tbody > tr.table-selected-row,
+  tbody > tr:nth-child(even) {
     background-color: var(--white);
   }
 
