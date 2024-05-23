@@ -46,3 +46,18 @@
   opacity: 0.6;
   background-color: transparent;
 }
+
+@media (max-width: 650px) {
+  .icon-btn:hover::before {
+    background-color: transparent;
+  }
+
+  .edit:active::before,
+  .save:active::before {
+    background-color: var(--primary-hover-color);
+  }
+  .delete:active::before,
+  .cancel:active::before {
+    background-color: var(--danger-hover-color);
+  }
+}
