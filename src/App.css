@@ -1,6 +1,7 @@
 .app {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   padding-inline: clamp(2rem, 3vw + 1rem, 10rem);
   padding-block: clamp(1rem, 2vh + 0.5rem, 10rem);
   background-color: var(--body-bg-color);
